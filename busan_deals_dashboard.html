@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>釜山旅遊優惠攻略</title>
+    <style>
+        * {{
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }}
+        body {{
+            background-color: #FDF8F5;
+            color: #333333;
+            line-height: 1.6;
+            padding-bottom: 40px;
+        }}
+        .quick-nav {{
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background-color: #ffffff;
+            padding: 12px 16px;
+            display: flex;
+            gap: 8px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            border-bottom: 1px solid #F0E6D8;
+        }}
+        .quick-nav::-webkit-scrollbar {{
+            display: none;
+        }}
+        .quick-nav a {{
+            text-decoration: none;
+            background-color: #F4E8D8;
+            color: #2C3E50;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: bold;
+            flex-shrink: 0;
+            transition: all 0.2s;
+        }}
+        .quick-nav a:hover, .quick-nav a:active {{
+            background-color: #D4A373;
+            color: #ffffff;
+        }}
+        .container {{
+            max-width: 480px;
+            margin: 20px auto;
+            padding: 0 16px;
+        }}
+        .header-box {{
+            background-color: #ffffff;
+            padding: 24px 20px;
+            border-radius: 16px;
+            margin-bottom: 20px;
+            text-align: center;
+            border: 1px solid #F0E6D8;
+        }}
+        .header-box h1 {{
+            font-size: 20px;
+            font-weight: 700;
+            color: #2C3E50;
+            letter-spacing: 1.5px;
+        }}
+        .section-card {{
+            background-color: #ffffff;
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #F0E6D8;
+            scroll-margin-top: 70px;
+            border-left: 5px solid #4A6572;
+        }}
+        .section-card.airport {{ border-left-color: #E67E22; }}
+        .section-card.lotte-outlet {{ border-left-color: #3498DB; }}
+        .section-card.lotte-dept {{ border-left-color: #9B59B6; }}
+        .section-card.shinsegae {{ border-left-color: #E74C3C; }}
+        .section-card.oliveyoung {{ border-left-color: #27AE60; }}
+        .section-title {{
+            font-size: 17px;
+            color: #2C3E50;
+            margin-bottom: 12px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            border-bottom: 1px solid #F7F3EE;
+            padding-bottom: 8px;
+        }}
+        p, li {{
+            font-size: 14px;
+            color: #444444;
+            margin-bottom: 8px;
+        }}
+        ul {{
+            padding-left: 18px;
+            margin-top: 6px;
+        }}
+        li {{
+            margin-bottom: 6px;
+        }}
+        .highlight-box {{
+            background-color: #FFF9E6;
+            border: 1px solid #FCECC9;
+            color: #856404;
+            padding: 12px;
+            border-radius: 10px;
+            margin-top: 12px;
+            font-size: 13px;
+        }
+        .highlight-box.pink {{
+            background-color: #FDF2F2;
+            border-color: #FADBD8;
+            color: #721C24;
+        }}
+        .highlight-box.green {{
+            background-color: #E8F5E9;
+            border-color: #C8E6C9;
+            color: #2E7D32;
+        }}
+        .img-gallery {{
+            margin-top: 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }}
+        .img-item {{
+            background: #FAFAFA;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid #EAEAEA;
+        }}
+        .img-item img {{
+            width: 100%;
+            height: auto;
+            display: block;
+        }}
+        .img-caption {{
+            padding: 8px 12px;
+            font-size: 12px;
+            color: #666666;
+            font-weight: bold;
+            text-align: center;
+            background: #F4EFEA;
+        }}
+        .badge {{
+            display: inline-block;
+            background-color: #F4E8D8;
+            color: #D4A373;
+            padding: 2px 8px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: bold;
+            margin-right: 4px;
+        }}
+        .link-btn {{
+            display: inline-block;
+            background-color: #7CA1B4;
+            color: white;
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-top: 8px;
+            transition: background 0.2s;
+        }}
+        .link-btn:hover {{
+            background-color: #63889B;
+        }}
+        .step-list {{
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+            margin-top: 8px;
+        }}
+        .step-list li {{
+            position: relative;
+            padding-left: 26px;
+            margin-bottom: 10px;
+        }}
+        .step-list li::before {{
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #8D9F87;
+            color: white;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            text-align: center;
+            font-size: 11px;
+            line-height: 18px;
+            font-weight: bold;
+        }}
+        .store-grid {{
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 6px;
+            margin-top: 8px;
+        }}
+        .store-item {{
+            background: #F9F9F9;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 13px;
+            color: #333;
+            border: 1px solid #EAEAEA;
+        }}
+        .back-btn {{
+            display: block;
+            width: 100%;
+            text-align: center;
+            background-color: #2C3E50;
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 24px;
+        }}
+    </style>
+</head>
+<body>
+
+    <nav class="quick-nav">
+        <a href="#airport">✈️ 機場換禮</a>
+        <a href="#outlet">🛍️ 樂天Outlet</a>
+        <a href="#dept">🏢 樂天百貨</a>
+        <a href="#shinsegae">🏬 新世界百貨</a>
+        <a href="#oliveyoung">💚 Olive Young</a>
+    </nav>
+
+    <div class="container">
+
+        <div class="header-box">
+            <h1>釜山旅遊優惠攻略</h1>
+        </div>
+
+        <div id="airport" class="section-card airport">
+            <div class="section-title">✈️ 1. 金海機場免費換禮</div>
+            <p><strong>適用條件：</strong>搭乘釜山航空，或於 KKday / Klook 購買釜山相關商品、憑登機證即可兌換。</p>
+            <p><strong>📍 兌換位置：</strong> 1 樓入境大廳，從 1 號入境口附近往左前方（或找電扶梯後方的觀光公社／官方活動快閃櫃檯，出關後左轉「Korea Tourism」攤位）。</p>
+            
+            <div class="highlight-box">
+                🎁 <strong>小提醒：</strong>免費換禮物（有時候只有筆 🥺）
+            </div>
+
+            <div class="img-gallery">
+                <div class="img-item">
+                    <img src="booth_location.jpg" alt="兌換攤位示意圖">
+                    <div class="img-caption">📍 兌換攤位外觀示意圖</div>
+                </div>
+                <div class="img-item">
+                    <img src="board_sign.jpg" alt="在這個看板前面換">
+                    <div class="img-caption">🎯 請認明「在這個看板前面換」</div>
+                </div>
+                <div class="img-item">
+                    <img src="gift_photo.jpg" alt="禮物照片說明">
+                    <div class="img-caption">🎁 實際兌換到的精美禮物照片說明</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="outlet" class="section-card lotte-outlet">
+            <div class="section-title">🛍️ 2. 釜山樂天 Premium Outlets</div>
+            <a href="https://s.klook.com/c/E3_M8280yY" class="link-btn" target="_blank">🔗 點擊查看 Klook 活動頁面</a>
+            <ul style="margin-top: 12px;">
+                <li><span class="badge">迎賓禮</span> <strong>Olive Young 迎賓禮品</strong></li>
+                <li><span class="badge">折價券</span> <strong>KRW 15,000</strong>（消費滿 KRW 300,000 適用）</li>
+                <li><span class="badge">折價券</span> <strong>KRW 30,000</strong>（消費滿 KRW 600,000 適用）</li>
+                <li><span class="badge">折價券</span> <strong>KRW 50,000</strong>（消費滿 KRW 1,000,000 適用）</li>
+                <li><span class="badge">餐飲</span> <strong>Ontheborder</strong> (3F)：用餐享 9 折；滿 50,000 韓元贈 2 杯生啤酒</li>
+                <li><span class="badge">餐飲</span> <strong>Konomi Sushi</strong> (3F)：用餐享 9 折優惠</li>
+                <li><span class="badge">餐飲</span> <strong>Mad For Garlic</strong>：消費滿 KRW 50,000 即贈戈貢佐拉披薩一份</li>
+            </ul>
+        </div>
+
+        <div id="dept" class="section-card lotte-dept">
+            <div class="section-title">🏢 3. 樂天百貨專屬優惠</div>
+            <a href="https://www.kkday.com/zh-tw/product/809078?cid=4904&ud1=detail-share&ud2=app-ios" class="link-btn" target="_blank">🔗 點擊查看 KKday 活動頁面</a>
+            <ul style="margin-top: 12px;">
+                <li><span class="badge">折扣</span> 單筆消費滿 <strong>KRW 100,000</strong> 即享 <strong>95折</strong>（最高折抵 KRW 100,000）</li>
+                <li><span class="badge">禮券</span> 單筆消費滿 <strong>KRW 300,000</strong>，贈 <strong>KRW 20,000</strong> 樂天百貨禮券</li>
+                <li><span class="badge">VBP</span> 出示 <strong>VISIT BUSAN PASS</strong>，至本館 3 樓 Avenuel Bar 領取免費咖啡</li>
+                <li><span class="badge">好禮</span> Google Maps 撰寫樂天百貨光復店評價，至 9 樓贈品處領取免費購物袋</li>
+                <li><span class="badge">好禮</span> 出示滿 5 萬韓元購物收據，至 9 樓贈品處領取免費購物袋</li>
+            </ul>
+        </div>
+
+        <div id="shinsegae" class="section-card shinsegae">
+            <div class="section-title">🏬 4. 新世界百貨會員與退稅</div>
+            <div class="highlight-box pink">
+                💡 <strong>重點提示：</strong>請先上 3 樓辦會員卡！
+            </div>
+            <ul class="step-list">
+                <li>跟著「Tax Refund」指標走到櫃檯，出示護照免費申辦會員。</li>
+                <li>到同樓層 Members Bar 兌換，<strong>1人送 2 杯飲料</strong>。</li>
+                <li>享有<strong>每月 5 次 95 折優惠</strong>。</li>
+            </ul>
+        </div>
+
+        <div id="oliveyoung" class="section-card oliveyoung">
+            <div class="section-title">💚 5. Olive Young 獨家優惠與換禮</div>
+            <p>去 Olive Young 消費時，只要出示 <strong>VISIT BUSAN PASS</strong>，就會<strong>贈送小贈品</strong>喔！</p>
+            
+            <div class="highlight-box green">
+                🎁 <strong>VBP 專屬可兌換贈品：</strong>出示 Visit Busan Pass 可兌換質感防水拉鍊小收納包（如下方實品照）。
+            </div>
+
+            <div class="img-gallery">
+                <div class="img-item">
+                    <img src="" alt="Olive Young 可兌換禮物">
+                    <div class="img-caption">🎁 VBP 可兌換之 Olive Young 質感收納包實品照</div>
+                </div>
+                <div class="img-item">
+                    <img src="" alt="參與活動的 Olive Young 門市">
+                    <div class="img-caption">🏪 參與活動之釜山指定門市一覽</div>
+                </div>
+            </div>
+
+            <p style="margin-top: 14px; font-weight: bold; color: #2C3E50;">📍 參與活動之指定釜山門市：</p>
+            <div class="store-grid">
+                <div class="store-item">✔️ OLIVE YOUNG Gwangan Beach Branch (廣安里)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Nampo Town Branch (南浦光復)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Busan Nampo Branch (釜山南浦)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Seomyeon Bujeon Jungang Branch (西面釜田中央)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Busan Station Branch (釜山站)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Busan Train Station Branch (釜山火車站)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Haeundae Central Branch (海雲台中央)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Seomyeon 1st Street Branch (西面一號街)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Busan Bexco Branch (BEXCO/Centum City)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Seomyeon Gaya-daero Branch (西面伽倻大路)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Lotte Primium Outlets Dongbusan (東釜山樂天Outlet)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Haeundae Jungang Branch (海雲台中央)</div>
+                <div class="store-item">✔️ OLIVE YOUNG Haeundae LCT Branch (海雲台LCT)</div>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-btn">返回首頁</a>
+
+    </div>
+
+</body>
+</html>
