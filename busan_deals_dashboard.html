@@ -5,19 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>釜山旅遊優惠攻略</title>
     <style>
-        * {{
+        * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        }}
-        body {{
+        }
+        body {
             background-color: #FDF8F5;
             color: #333333;
             line-height: 1.6;
             padding-bottom: 40px;
-        }}
-        .quick-nav {{
+        }
+        .quick-nav {
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -29,11 +29,11 @@
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
             border-bottom: 1px solid #F0E6D8;
-        }}
-        .quick-nav::-webkit-scrollbar {{
+        }
+        .quick-nav::-webkit-scrollbar {
             display: none;
-        }}
-        .quick-nav a {{
+        }
+        .quick-nav a {
             text-decoration: none;
             background-color: #F4E8D8;
             color: #2C3E50;
@@ -43,31 +43,31 @@
             font-weight: bold;
             flex-shrink: 0;
             transition: all 0.2s;
-        }}
-        .quick-nav a:hover, .quick-nav a:active {{
+        }
+        .quick-nav a:hover, .quick-nav a:active {
             background-color: #D4A373;
             color: #ffffff;
-        }}
-        .container {{
+        }
+        .container {
             max-width: 480px;
             margin: 20px auto;
             padding: 0 16px;
-        }}
-        .header-box {{
+        }
+        .header-box {
             background-color: #ffffff;
             padding: 24px 20px;
             border-radius: 16px;
             margin-bottom: 20px;
             text-align: center;
             border: 1px solid #F0E6D8;
-        }}
-        .header-box h1 {{
+        }
+        .header-box h1 {
             font-size: 20px;
             font-weight: 700;
             color: #2C3E50;
             letter-spacing: 1.5px;
-        }}
-        .section-card {{
+        }
+        .section-card {
             background-color: #ffffff;
             border-radius: 16px;
             padding: 20px;
@@ -75,13 +75,13 @@
             border: 1px solid #F0E6D8;
             scroll-margin-top: 70px;
             border-left: 5px solid #4A6572;
-        }}
-        .section-card.airport {{ border-left-color: #E67E22; }}
-        .section-card.lotte-outlet {{ border-left-color: #3498DB; }}
-        .section-card.lotte-dept {{ border-left-color: #9B59B6; }}
-        .section-card.shinsegae {{ border-left-color: #E74C3C; }}
-        .section-card.oliveyoung {{ border-left-color: #27AE60; }}
-        .section-title {{
+        }
+        .section-card.airport { border-left-color: #E67E22; }
+        .section-card.lotte-outlet { border-left-color: #3498DB; }
+        .section-card.lotte-dept { border-left-color: #9B59B6; }
+        .section-card.shinsegae { border-left-color: #E74C3C; }
+        .section-card.oliveyoung { border-left-color: #27AE60; }
+        .section-title {
             font-size: 17px;
             color: #2C3E50;
             margin-bottom: 12px;
@@ -91,20 +91,20 @@
             gap: 8px;
             border-bottom: 1px solid #F7F3EE;
             padding-bottom: 8px;
-        }}
-        p, li {{
+        }
+        p, li {
             font-size: 14px;
             color: #444444;
             margin-bottom: 8px;
-        }}
-        ul {{
+        }
+        ul {
             padding-left: 18px;
             margin-top: 6px;
-        }}
-        li {{
+        }
+        li {
             margin-bottom: 6px;
-        }}
-        .highlight-box {{
+        }
+        .highlight-box {
             background-color: #FFF9E6;
             border: 1px solid #FCECC9;
             color: #856404;
@@ -113,42 +113,42 @@
             margin-top: 12px;
             font-size: 13px;
         }
-        .highlight-box.pink {{
+        .highlight-box.pink {
             background-color: #FDF2F2;
             border-color: #FADBD8;
             color: #721C24;
-        }}
-        .highlight-box.green {{
+        }
+        .highlight-box.green {
             background-color: #E8F5E9;
             border-color: #C8E6C9;
             color: #2E7D32;
-        }}
-        .img-gallery {{
+        }
+        .img-gallery {
             margin-top: 14px;
             display: flex;
             flex-direction: column;
             gap: 12px;
-        }}
-        .img-item {{
+        }
+        .img-item {
             background: #FAFAFA;
             border-radius: 10px;
             overflow: hidden;
             border: 1px solid #EAEAEA;
-        }}
-        .img-item img {{
+        }
+        .img-item img {
             width: 100%;
             height: auto;
             display: block;
-        }}
-        .img-caption {{
+        }
+        .img-caption {
             padding: 8px 12px;
             font-size: 12px;
             color: #666666;
             font-weight: bold;
             text-align: center;
             background: #F4EFEA;
-        }}
-        .badge {{
+        }
+        .badge {
             display: inline-block;
             background-color: #F4E8D8;
             color: #D4A373;
@@ -157,8 +157,8 @@
             font-size: 11px;
             font-weight: bold;
             margin-right: 4px;
-        }}
-        .link-btn {{
+        }
+        .link-btn {
             display: inline-block;
             background-color: #7CA1B4;
             color: white;
@@ -169,22 +169,22 @@
             font-weight: bold;
             margin-top: 8px;
             transition: background 0.2s;
-        }}
-        .link-btn:hover {{
+        }
+        .link-btn:hover {
             background-color: #63889B;
-        }}
-        .step-list {{
+        }
+        .step-list {
             counter-reset: step-counter;
             list-style: none;
             padding-left: 0;
             margin-top: 8px;
-        }}
-        .step-list li {{
+        }
+        .step-list li {
             position: relative;
             padding-left: 26px;
             margin-bottom: 10px;
-        }}
-        .step-list li::before {{
+        }
+        .step-list li::before {
             counter-increment: step-counter;
             content: counter(step-counter);
             position: absolute;
@@ -199,22 +199,22 @@
             font-size: 11px;
             line-height: 18px;
             font-weight: bold;
-        }}
-        .store-grid {{
+        }
+        .store-grid {
             display: grid;
             grid-template-columns: 1fr;
             gap: 6px;
             margin-top: 8px;
-        }}
-        .store-item {{
+        }
+        .store-item {
             background: #F9F9F9;
             padding: 8px 12px;
             border-radius: 6px;
             font-size: 13px;
             color: #333;
             border: 1px solid #EAEAEA;
-        }}
-        .back-btn {{
+        }
+        .back-btn {
             display: block;
             width: 100%;
             text-align: center;
@@ -225,7 +225,7 @@
             border-radius: 12px;
             font-weight: bold;
             margin-top: 24px;
-        }}
+        }
     </style>
 </head>
 <body>
@@ -244,6 +244,7 @@
             <h1>釜山旅遊優惠攻略</h1>
         </div>
 
+        <!-- 第 1 部分：機場免費換禮 -->
         <div id="airport" class="section-card airport">
             <div class="section-title">✈️ 1. 金海機場免費換禮</div>
             <p><strong>適用條件：</strong>搭乘釜山航空，或於 KKday / Klook 購買釜山相關商品、憑登機證即可兌換。</p>
@@ -255,20 +256,21 @@
 
             <div class="img-gallery">
                 <div class="img-item">
-                    <img src="booth_location.jpg" alt="兌換攤位示意圖">
+                    <img src="" alt="兌換攤位示意圖">
                     <div class="img-caption">📍 兌換攤位外觀示意圖</div>
                 </div>
                 <div class="img-item">
-                    <img src="board_sign.jpg" alt="在這個看板前面換">
+                    <img src="" alt="在這個看板前面換">
                     <div class="img-caption">🎯 請認明「在這個看板前面換」</div>
                 </div>
                 <div class="img-item">
-                    <img src="gift_photo.jpg" alt="禮物照片說明">
+                    <img src="" alt="禮物照片說明">
                     <div class="img-caption">🎁 實際兌換到的精美禮物照片說明</div>
                 </div>
             </div>
         </div>
 
+        <!-- 第 2 部分：釜山樂天 Premium Outlets -->
         <div id="outlet" class="section-card lotte-outlet">
             <div class="section-title">🛍️ 2. 釜山樂天 Premium Outlets</div>
             <a href="https://s.klook.com/c/E3_M8280yY" class="link-btn" target="_blank">🔗 點擊查看 Klook 活動頁面</a>
@@ -283,6 +285,7 @@
             </ul>
         </div>
 
+        <!-- 第 3 部分：樂天百貨專屬優惠 -->
         <div id="dept" class="section-card lotte-dept">
             <div class="section-title">🏢 3. 樂天百貨專屬優惠</div>
             <a href="https://www.kkday.com/zh-tw/product/809078?cid=4904&ud1=detail-share&ud2=app-ios" class="link-btn" target="_blank">🔗 點擊查看 KKday 活動頁面</a>
@@ -295,6 +298,7 @@
             </ul>
         </div>
 
+        <!-- 第 4 部分：新世界百貨會員與退稅攻略 -->
         <div id="shinsegae" class="section-card shinsegae">
             <div class="section-title">🏬 4. 新世界百貨會員與退稅</div>
             <div class="highlight-box pink">
@@ -307,6 +311,7 @@
             </ul>
         </div>
 
+        <!-- 第 5 部分：Olive Young 獨家優惠與換禮 -->
         <div id="oliveyoung" class="section-card oliveyoung">
             <div class="section-title">💚 5. Olive Young 獨家優惠與換禮</div>
             <p>去 Olive Young 消費時，只要出示 <strong>VISIT BUSAN PASS</strong>，就會<strong>贈送小贈品</strong>喔！</p>
@@ -317,7 +322,7 @@
 
             <div class="img-gallery">
                 <div class="img-item">
-                    <img src="" alt="Olive Young 可兌換禮物">
+                    <img src="OY_" alt="Olive Young 可兌換禮物">
                     <div class="img-caption">🎁 VBP 可兌換之 Olive Young 質感收納包實品照</div>
                 </div>
                 <div class="img-item">
